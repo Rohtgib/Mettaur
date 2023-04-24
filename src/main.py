@@ -11,7 +11,8 @@ bot = commands.Bot(command_prefix='m!', help_command=None, intents=discord.Inten
 async def on_ready():
     print(f'Logged in as {bot.user.name} ({bot.user.id})')
     print('------')
-
+    await bot.change_presence(activity=discord.Game(name='Megaman X6'))
+    
 async def setup():
     for filename in os.listdir('./cogs'):
         if filename.endswith('.py'):
