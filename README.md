@@ -2,13 +2,13 @@
 A multipurpose, self hosted Discord bot written in Python.
 
 ## Features (WIP)
----
+
 ### Moderation
 - **Clean messages in a channel**  `m!wipe
 - **Kick users** `m!kick`
 
 ## Installation and Usage
----
+
 ### On your machine
 
 Creating a Python virtual environment is optional, but recommended, to make click [here](https://docs.python.org/3/library/venv.html#venv-def) to learn how to make your own.
@@ -38,5 +38,5 @@ python main.py
 TBD
 
 ## Contributing
----
+
 I'm currently working on this project by myself, and I intend to keep it that way for now. Feel free to fork the repo and make changes as you see fit. 
