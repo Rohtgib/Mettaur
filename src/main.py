@@ -4,7 +4,7 @@ import os
 from discord.ext import commands
 from config import Config
 
-bot = commands.Bot(command_prefix='m!', intents=discord.Intents.all(), token=Config.getToken())
+bot = commands.Bot(command_prefix='m!', help_command=None, intents=discord.Intents.all(), token=Config.getToken())
 
 
 @bot.event

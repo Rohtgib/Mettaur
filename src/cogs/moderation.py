@@ -21,7 +21,7 @@ class Moderation(commands.Cog):
             embed = discord.Embed(
                 title="m!wipe command", description="Deletes the given number of messages in a channel", color=0xf4c448)
             embed.add_field(name="Parameters:",
-                            value="Number of messages (250 max)", inline=True)
+                            value="(Number of messages, 250 max)", inline=True)
             embed.add_field(name="Example:",
                             value="m!wipe 20", inline=True)
             await ctx.send(embed=embed)
@@ -45,18 +45,18 @@ class Moderation(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(kick_members=True)
-    async def kick(ctx, user: discord.Member, *, reason="No reason given"):
-        pass
-
-    @commands.command()
-    @commands.has_permissions(ban_members=True)
-    async def ban(ctx, user: discord.Member, *, reason="No reason given"):
-        pass
-
-    @commands.command()
-    @commands.has_permissions(ban_members=True)
-    async def unban(ctx, user: int, *, reason="No reason given"):
-        pass
+    async def kick(self, ctx, user: discord.Member = None, *, reason="No reason given"):
+        try:
+            if user == None:
+                await ctx.send("This command kicks people oooo")
+            else:
+                try:
+                    await ctx.guild.kick(user, reason=reason)
+                    await ctx.send(f"User {user.name}#{user.discriminator} was kicked")
+                except (discord.HTTPException, discord.Forbidden):
+                    await ctx.send(f"I couldn't kick user {user.name}#{user.discriminator}")
+        except commands.MemberNotFound:
+            await ctx.send(f"I couldn't find user {user.name}#{user.discriminator}")
 
 
 async def setup(bot):
