@@ -4,8 +4,9 @@ A multipurpose, self hosted Discord bot written in Python.
 ## Features (WIP)
 
 ### Moderation
-- **Clean messages in a channel**  `m!wipe
+- **Clean messages in a channel**  `m!wipe`
 - **Kick users** `m!kick`
+- **Ban users** `m!ban`
 
 ## Installation and Usage
 
