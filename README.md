@@ -12,7 +12,7 @@ A multipurpose, self hosted Discord bot written in Python.
 
 ### On your machine
 
-Creating a Python virtual environment is optional, but recommended, to make click [here](https://docs.python.org/3/library/venv.html#venv-def) to learn how to make your own.
+Creating a Python virtual environment is optional, but recommended, click [here](https://docs.python.org/3/library/venv.html#venv-def) to learn how to make your own.
 
 Install all the necessary requirements from the **requirements.txt** file.
 
