@@ -1,5 +1,13 @@
-debug.py
-__pycache__
+# Folders
+.vscode
 env
 img
+
+# Debug script
+debug.py
+
+# Environment variables, make your own using the .env.template file
 .env
+
+# Etc
+__pycache__
