@@ -28,7 +28,9 @@ class moderationCog(commands.Cog):
             embed.add_field(
                 name="Parameters:", value="(Number of messages, 250 max)", inline=True
             )
-            embed.add_field(name="Example:", value=f"{Config.getPrefix()}wipe 20", inline=True)
+            embed.add_field(
+                name="Example:", value=f"{Config.getPrefix()}wipe 20", inline=True
+            )
             await ctx.send(embed=embed)
         else:
             if count < 1:
@@ -61,7 +63,9 @@ class moderationCog(commands.Cog):
                 name="Parameters:", value="(User) (Reason, optional)", inline=True
             )
             embed.add_field(
-                name="Example:", value=f"{Config.getPrefix()}kick @Rohtgib#5495 stupid", inline=True
+                name="Example:",
+                value=f"{Config.getPrefix()}kick @Rohtgib#5495 stupid",
+                inline=True,
             )
             await ctx.send(embed=embed)
         else:
@@ -99,7 +103,9 @@ class moderationCog(commands.Cog):
                 name="Parameters:", value="(User) (Reason, optional)", inline=True
             )
             embed.add_field(
-                name="Example:", value=f"{Config.getPrefix()}ban @Rohtgib#5495 dumb", inline=True
+                name="Example:",
+                value=f"{Config.getPrefix()}ban @Rohtgib#5495 dumb",
+                inline=True,
             )
             await ctx.send(embed=embed)
         else:
@@ -136,7 +142,11 @@ class moderationCog(commands.Cog):
             embed.add_field(
                 name="Parameters:", value="(User ID) (Reason: Optional)", inline=True
             )
-            embed.add_field(name="Example:", value=f"{Config.getPrefix()}unban @Rohtgib#5495", inline=True)
+            embed.add_field(
+                name="Example:",
+                value=f"{Config.getPrefix()}unban @Rohtgib#5495",
+                inline=True,
+            )
             await ctx.send(embed=embed)
         else:
             try:

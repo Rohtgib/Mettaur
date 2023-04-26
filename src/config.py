@@ -8,5 +8,6 @@ load_dotenv(dotenv_path)
 class Config:
     def getToken():
         return os.getenv("BOT_TOKEN")
+
     def getPrefix():
         return os.getenv("BOT_PREFIX")
