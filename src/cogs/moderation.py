@@ -123,6 +123,12 @@ class Moderation(commands.Cog):
     async def ban_error(self, ctx, error):
         await injected(ctx, error)
 
+    @commands.command()
+    @commands.has_permissions(ban_members=True)
+    async def unban(self, ctx, user: discord.Member = None):
+        pass
+        pass
+
 
 async def setup(bot):
     await bot.add_cog(Moderation(bot))
