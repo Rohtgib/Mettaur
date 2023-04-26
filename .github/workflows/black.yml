@@ -25,7 +25,7 @@ jobs:
     - name: Format with Black
       run: black .
 
-  Push changes:
+  Push_changes:
     runs-on: ubuntu-latest
 
     steps:
