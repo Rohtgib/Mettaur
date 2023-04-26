@@ -13,7 +13,7 @@ class moderationCog(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print(f'{filename[:-3].capitalize()} cog loaded')
+        print(f"{filename[:-3].capitalize()} cog loaded")
 
     @commands.command()
     @commands.has_permissions(manage_messages=True)
