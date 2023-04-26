@@ -125,14 +125,16 @@ class Moderation(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(ban_members=True)
-    async def unban(self, ctx, user_id: int = None, *, reason = "No reason given"):
+    async def unban(self, ctx, user_id: int = None, *, reason="No reason given"):
         if user_id == None:
             embed = discord.Embed(
                 title="m!uban command",
                 description="Unbans an user from the server",
                 color=0xF4C448,
             )
-            embed.add_field(name="Parameters:", value="(User ID) (Reason: Optional)", inline=True)
+            embed.add_field(
+                name="Parameters:", value="(User ID) (Reason: Optional)", inline=True
+            )
             embed.add_field(name="Example:", value="m!unban @Rohtgib#5495", inline=True)
             await ctx.send(embed=embed)
         else:
@@ -153,7 +155,7 @@ class Moderation(commands.Cog):
                     inline=True,
                 )
                 await ctx.send(embed=embed)
-    
+
     @unban.error
     async def unban_error(self, ctx, error):
         await injected(ctx, error)
