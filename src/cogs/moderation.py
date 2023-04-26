@@ -126,7 +126,14 @@ class Moderation(commands.Cog):
     @commands.command()
     @commands.has_permissions(ban_members=True)
     async def unban(self, ctx, user: discord.Member = None):
-		print(f'test test')
+        if user == None:
+            embed = discord.Embed(
+                title="m!uban command",description="Unbans an user from the server",color=0xF4C448,)
+            embed.add_field(name="Parameters:", value="(User)", inline=True)
+            embed.add_field(name="Example:", value="m!unban @Rohtgib#5495", inline=True)
+            await ctx.send(embed=embed)
+        else:
+            pass
 
 
 async def setup(bot):
