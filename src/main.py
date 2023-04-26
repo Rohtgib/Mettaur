@@ -17,7 +17,7 @@ async def on_ready():
     print(f"Starting up as {bot.user.name} ({bot.user.id})")
     print(f"Current prefix is {Config.getPrefix()}")
     print("------")
-    await bot.change_presence(activity=discord.Game(name="Megaman X6"))
+    await bot.change_presence(activity=discord.Game(name=f"{Config.getStatus()}"))
 
 
 async def setup():

@@ -19,7 +19,7 @@ class adminCog(commands.Cog):
     async def shutdown(self, ctx):
         if ctx.author.id != ctx.guild.owner_id:
             return
-        await ctx.send("Shutting down...")
+        await ctx.send("**Shutting down...**")
         print("------")
         print("Mettaur is shutting down, thank you for using me!")
         await self.bot.close()

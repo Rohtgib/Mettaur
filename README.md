@@ -20,12 +20,14 @@ Install all the necessary requirements from the **requirements.txt** file.
 pip install -r requirements.txt
 ```
 
-Make a copy of the **.env.template** file and name it **.env**, this is where you'll place your Discord bot token. (If you don't have one, go [here](https://discord.com/developers/docs/intro) for Discord's developer portal documentation)
+Make a copy of the **.env.template** file and name it **.env**, this is where you'll place your Discord bot token and other default variables. (If you don't have one, go [here](https://discord.com/developers/docs/intro) for Discord's developer portal documentation)
 
 Your **.env** file should look like this:
 
 ```.env
 BOT_TOKEN = Your token goes here
+BOT_PREFIX = Your prefix goes here
+BOT_STATUS = The status the bot will display
 ```
 
 Lastly, run the **main.py** script located in the **src** directory

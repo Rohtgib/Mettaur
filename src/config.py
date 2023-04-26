@@ -11,3 +11,6 @@ class Config:
 
     def getPrefix():
         return os.getenv("BOT_PREFIX")
+    
+    def getStatus():
+        return os.getenv("BOT_STATUS")
