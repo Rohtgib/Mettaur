@@ -1,19 +1,19 @@
 import os
 import discord
-from error_handling import injected
+from errors import injected
 from discord.ext import commands
 
 path = __file__
 filename = os.path.basename(path)
 
 
-class Moderation(commands.Cog):
+class moderationCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print(f"{filename} loaded")
+        print(f'{filename[:-3].capitalize()} cog loaded')
 
     @commands.command()
     @commands.has_permissions(manage_messages=True)
@@ -162,4 +162,4 @@ class Moderation(commands.Cog):
 
 
 async def setup(bot):
-    await bot.add_cog(Moderation(bot))
+    await bot.add_cog(moderationCog(bot))

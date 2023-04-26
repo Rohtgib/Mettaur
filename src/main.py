@@ -14,7 +14,7 @@ bot = commands.Bot(
 
 @bot.event
 async def on_ready():
-    print(f"Logged in as {bot.user.name} ({bot.user.id})")
+    print(f"Starting up as {bot.user.name} ({bot.user.id})")
     print("------")
     await bot.change_presence(activity=discord.Game(name="Megaman X6"))
 

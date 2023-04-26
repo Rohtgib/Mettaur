@@ -1,10 +1,10 @@
 import os
 import discord
+from errors import injected
 from discord.ext import commands
 
 path = __file__
 filename = os.path.basename(path)
-
 
 class Cog(commands.Cog):
     def __init__(self, bot):
@@ -17,28 +17,10 @@ class Cog(commands.Cog):
     @commands.command()
     async def command(self, ctx):
         await ctx.send('I work')
-
-    @commands.command()
-    async def command_with_parameter(self, ctx, parameter=None):
-        # Show general command usage
-        if parameter == None:
-            embed = discord.Embed(
-                title="m!command_with_parameter command", description="Does something (with a parameter)", color=0xf4c448)
-            embed.add_field(name="Parameters:",
-                            value="Whatever parameter", inline=True)
-            embed.add_field(name="Example:",
-                            value="m!command_with_parameter parameter", inline=True)
-            await ctx.send(embed=embed)
-        # Actually do something
-        else:
-            try:
-                # Work how it should
-                pass
-            except ValueError:
-                # Do something else
-                pass
-            pass
-
+    
+    @command.error
+    async def command_error(self, ctx, error):
+        await injected(ctx, error)
 
 async def setup(bot):
     await bot.add_cog(Cog(bot))
