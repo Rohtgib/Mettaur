@@ -126,8 +126,7 @@ class Moderation(commands.Cog):
     @commands.command()
     @commands.has_permissions(ban_members=True)
     async def unban(self, ctx, user: discord.Member = None):
-        pass
-        pass
+		print(f'test test')
 
 
 async def setup(bot):
