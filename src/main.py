@@ -5,7 +5,7 @@ from discord.ext import commands
 from config import Config
 
 bot = commands.Bot(
-    command_prefix="m!",
+    command_prefix=Config.getPrefix(),
     help_command=None,
     intents=discord.Intents.all(),
     token=Config.getToken(),
@@ -15,6 +15,7 @@ bot = commands.Bot(
 @bot.event
 async def on_ready():
     print(f"Starting up as {bot.user.name} ({bot.user.id})")
+    print(f"Current prefix is {Config.getPrefix()}")
     print("------")
     await bot.change_presence(activity=discord.Game(name="Megaman X6"))
 

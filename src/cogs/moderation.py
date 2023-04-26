@@ -2,6 +2,7 @@ import os
 import discord
 from errors import injected
 from discord.ext import commands
+from config import Config
 
 path = __file__
 filename = os.path.basename(path)
@@ -20,14 +21,14 @@ class moderationCog(commands.Cog):
     async def wipe(self, ctx, count: int = None):
         if count == None:
             embed = discord.Embed(
-                title="m!wipe command",
+                title=f"{Config.getPrefix()}wipe command",
                 description="Deletes the given number of messages in a channel",
                 color=0xF4C448,
             )
             embed.add_field(
                 name="Parameters:", value="(Number of messages, 250 max)", inline=True
             )
-            embed.add_field(name="Example:", value="m!wipe 20", inline=True)
+            embed.add_field(name="Example:", value=f"{Config.getPrefix()}wipe 20", inline=True)
             await ctx.send(embed=embed)
         else:
             if count < 1:
@@ -52,7 +53,7 @@ class moderationCog(commands.Cog):
     async def kick(self, ctx, user: discord.Member = None, *, reason="No reason given"):
         if user == None:
             embed = discord.Embed(
-                title="m!kick command",
+                title=f"{Config.getPrefix()}kick command",
                 description="Kicks an user from the server",
                 color=0xF4C448,
             )
@@ -60,7 +61,7 @@ class moderationCog(commands.Cog):
                 name="Parameters:", value="(User) (Reason, optional)", inline=True
             )
             embed.add_field(
-                name="Example:", value="m!kick @Rohtgib#5495 stupid", inline=True
+                name="Example:", value=f"{Config.getPrefix()}kick @Rohtgib#5495 stupid", inline=True
             )
             await ctx.send(embed=embed)
         else:
@@ -90,7 +91,7 @@ class moderationCog(commands.Cog):
     async def ban(self, ctx, user: discord.Member = None, *, reason="No reason given"):
         if user == None:
             embed = discord.Embed(
-                title="m!ban command",
+                title=f"{Config.getPrefix()}ban command",
                 description="Bans an user from the server",
                 color=0xF4C448,
             )
@@ -98,7 +99,7 @@ class moderationCog(commands.Cog):
                 name="Parameters:", value="(User) (Reason, optional)", inline=True
             )
             embed.add_field(
-                name="Example:", value="m!ban @Rohtgib#5495 dumb", inline=True
+                name="Example:", value=f"{Config.getPrefix()}ban @Rohtgib#5495 dumb", inline=True
             )
             await ctx.send(embed=embed)
         else:
@@ -128,14 +129,14 @@ class moderationCog(commands.Cog):
     async def unban(self, ctx, user_id: int = None, *, reason="No reason given"):
         if user_id == None:
             embed = discord.Embed(
-                title="m!uban command",
+                title=f"{Config.getPrefix()}uban command",
                 description="Unbans an user from the server",
                 color=0xF4C448,
             )
             embed.add_field(
                 name="Parameters:", value="(User ID) (Reason: Optional)", inline=True
             )
-            embed.add_field(name="Example:", value="m!unban @Rohtgib#5495", inline=True)
+            embed.add_field(name="Example:", value=f"{Config.getPrefix()}unban @Rohtgib#5495", inline=True)
             await ctx.send(embed=embed)
         else:
             try:

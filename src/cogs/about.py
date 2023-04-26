@@ -2,6 +2,7 @@ import os
 import discord
 from errors import injected
 from discord.ext import commands
+from config import Config
 
 path = __file__
 filename = os.path.basename(path)
@@ -49,10 +50,10 @@ class aboutCog(commands.Cog):
         )
         embed.add_field(
             name="Features",
-            value="General moderation commands, server wide information display, and some other miscellaneous daily use commands most other Discord bots share, if you want to take a look at all the commands run the **m!help** command",
+            value=f"General moderation commands, server wide information display, and some other miscellaneous daily use commands most other Discord bots share, if you want to take a look at all the commands run the **{Config.getPrefix()}help** command",
             inline=True,
         )
-        embed.add_field(name="Prefix", value="m!", inline=True)
+        embed.add_field(name="Prefix", value=f"{Config.getPrefix()}", inline=True)
         embed.add_field(
             name="Coded and mantained by", value="<@355198184198373409>", inline=True
         )
