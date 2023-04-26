@@ -3,7 +3,7 @@ name: Black Formatter
 on: [push]
 
 jobs:
-  build:
+  Build:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,7 +15,7 @@ jobs:
       with:
         python-version: '3.9'
   
-  format:
+  Format:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,10 +25,14 @@ jobs:
     - name: Format with Black
       run: black .
 
-  publish:
+  Push changes:
     runs-on: ubuntu-latest
 
     steps:
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+
     - name: Commit Changes
       run: |
         git config --local user.email "action@github.com"
