@@ -67,7 +67,7 @@ class Moderation(commands.Cog):
             try:
                 await ctx.guild.kick(user, reason=reason)
                 embed = discord.Embed(
-                    title=f"User {user.name}#{user.discriminator} was kicked",
+                    title=f"User {user} was kicked",
                     color=0xF4C448,
                 )
                 embed.add_field(name="Reason:", value=f"{reason}", inline=True)
@@ -76,7 +76,7 @@ class Moderation(commands.Cog):
                 embed = discord.Embed(color=0xFF4A4A)
                 embed.add_field(
                     name="Kick failed",
-                    value=f"I couldn't kick user {user.name}#{user.discriminator}, make sure I have the necessary permissions to kick this user",
+                    value=f"I couldn't kick user {user}, make sure I have the necessary permissions to kick this user",
                     inline=True,
                 )
                 await ctx.send(embed=embed)
@@ -105,7 +105,7 @@ class Moderation(commands.Cog):
             try:
                 await ctx.guild.ban(user, reason=reason)
                 embed = discord.Embed(
-                    title=f"User {user.name}#{user.discriminator} was banned",
+                    title=f"User {user} was banned",
                     color=0xF4C448,
                 )
                 embed.add_field(name="Reason:", value=f"{reason}", inline=True)
@@ -114,7 +114,7 @@ class Moderation(commands.Cog):
                 embed = discord.Embed(color=0xFF4A4A)
                 embed.add_field(
                     name="Ban failed",
-                    value=f"I couldn't ban user {user.name}#{user.discriminator}, make sure I have the necessary permissions",
+                    value=f"I couldn't ban user {user}, make sure I have the necessary permissions",
                     inline=True,
                 )
                 await ctx.send(embed=embed)
@@ -125,18 +125,38 @@ class Moderation(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(ban_members=True)
-    async def unban(self, ctx, user: discord.Member = None):
-        if user == None:
+    async def unban(self, ctx, user_id: int = None, *, reason = "No reason given"):
+        if user_id == None:
             embed = discord.Embed(
                 title="m!uban command",
                 description="Unbans an user from the server",
                 color=0xF4C448,
             )
-            embed.add_field(name="Parameters:", value="(User)", inline=True)
+            embed.add_field(name="Parameters:", value="(User ID) (Reason: Optional)", inline=True)
             embed.add_field(name="Example:", value="m!unban @Rohtgib#5495", inline=True)
             await ctx.send(embed=embed)
         else:
-            pass
+            try:
+                user = await self.bot.fetch_user(user_id)
+                await ctx.guild.unban(user)
+                embed = discord.Embed(
+                    title=f"User {user} has been ubanned",
+                    color=0xF4C448,
+                )
+                embed.add_field(name="Reason:", value=f"{reason}", inline=True)
+                await ctx.send(embed=embed)
+            except (discord.HTTPException, discord.Forbidden):
+                embed = discord.Embed(color=0xFF4A4A)
+                embed.add_field(
+                    name="Unban failed",
+                    value=f"I couldn't unban user {user}, are you sure they're even banned?",
+                    inline=True,
+                )
+                await ctx.send(embed=embed)
+    
+    @unban.error
+    async def unban_error(self, ctx, error):
+        await injected(ctx, error)
 
 
 async def setup(bot):

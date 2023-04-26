@@ -7,7 +7,7 @@ async def injected(ctx, error):
         embed = discord.Embed(color=0xFF4A4A)
         embed.add_field(
             name="User not found",
-            value=f"I couldn't find this user, make sure you're using the right user ID or mentioning the user",
+            value=f"I couldn't find this user in the server, make sure you're using the right user ID or mentioning the user",
             inline=True,
         )
         await ctx.send(embed=embed)
@@ -15,7 +15,7 @@ async def injected(ctx, error):
         embed = discord.Embed(color=0xFF4A4A)
         embed.add_field(
             name="Wrong argument used",
-            value=f"I couldn't use the argument you passed, make sure it's the right one",
+            value=f"I couldn't use the argument you passed, make sure it's the correct one",
             inline=True,
         )
         await ctx.send(embed=embed)
@@ -31,7 +31,7 @@ async def injected(ctx, error):
         embed = discord.Embed(color=0xFF4A4A)
         embed.add_field(
             name="Something went wrong",
-            value=f"An error ocurred, but I can't exactly tell you why",
+            value=f"An error ocurred, I currently can't tell you which one exactly",
             inline=True,
         )
         await ctx.send(embed=embed)
