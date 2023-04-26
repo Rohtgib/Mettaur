@@ -28,7 +28,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
 
-      steps:
+    steps:
     - name: Commit Changes
       run: |
         git config --local user.email "action@github.com"
