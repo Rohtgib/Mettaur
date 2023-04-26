@@ -16,9 +16,9 @@ jobs:
         python-version: '3.9'
   
   format:
-    steps:
     runs-on: ubuntu-latest
-      steps:
+
+    steps:
     - name: Install Black
       run: pip install black
 
@@ -26,7 +26,6 @@ jobs:
       run: black .
 
   publish:
-    steps:
     runs-on: ubuntu-latest
 
       steps:
