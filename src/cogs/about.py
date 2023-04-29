@@ -20,7 +20,21 @@ class aboutCog(commands.Cog):
 
     @commands.command()
     async def server(self, ctx):
-        await ctx.send("Information about the server")
+        creationDate = datetimeDiscord(ctx.guild.created_at)
+        serverRoles = [role.mention for role in ctx.guild.roles if role.name != "@everyone"]
+        embed=discord.Embed()
+        embed.set_author(name=f"{ctx.guild.name}", icon_url=f"{ctx.guild.icon.url}")
+        embed.set_thumbnail(url=ctx.guild.icon.url)
+        embed.add_field(name="Owner", value=f"{ctx.guild.owner}", inline=False)
+        embed.add_field(name="Member Count", value=f"{ctx.guild.member_count}", inline=True)
+        embed.add_field(name="Text Channels", value=f"{len(ctx.guild.text_channels)}", inline=True)
+        embed.add_field(name="Voice Channels", value=f"{len(ctx.guild.voice_channels)}", inline=True)
+        embed.add_field(name="Emotes", value=f"{len(ctx.guild.emojis)}", inline=True)
+        embed.add_field(name="Stickers", value=f"{len(ctx.guild.stickers)}", inline=True)
+        embed.add_field(name="Roles", value=f"{len(ctx.guild.roles)-1}", inline=True)
+        embed.add_field(name="Role List", value=f"{' '.join(serverRoles)}", inline=False)
+        embed.set_footer(text=f"Server ID: {ctx.guild.id} | Server created at {creationDate.formatted_date}")
+        await ctx.send(embed=embed)
 
     @server.error
     async def command_error(self, ctx, error):
@@ -28,14 +42,6 @@ class aboutCog(commands.Cog):
 
     @commands.command()
     async def who(self, ctx, user: discord.Member = None):
-        # Nickname (if there's even one) - display_name
-        # Whole username (User#Discrim) - pretty sure just the object
-        # Profile picture - display_avatar
-        # When did the user make their account - created_at
-        # When did the user join the server - joined_at
-        # User ID - id
-        # User permissions in the server - guild_permissions
-        # User roles - roles
         if user == None:
             user = ctx.author
             userCreated = datetimeDiscord(user.created_at)
