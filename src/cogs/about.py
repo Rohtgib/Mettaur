@@ -1,12 +1,13 @@
 import os
 import discord
+import datetime
 from errors import injected
 from discord.ext import commands
 from config import Config
+from interfaces.time import datetimeDiscord
 
 path = __file__
 filename = os.path.basename(path)
-
 
 class aboutCog(commands.Cog):
     def __init__(self, bot):
@@ -26,11 +27,31 @@ class aboutCog(commands.Cog):
 
     @commands.command()
     async def who(self, ctx, user: discord.Member = None):
+        # Nickname (if there's even one) - display_name
+        # Whole username (User#Discrim) - pretty sure just the object
+        # Profile picture - display_avatar
+        # When did the user make their account - created_at
+        # When did the user join the server - joined_at
+        # User ID - id
+        # User permissions in the server - guild_permissions
+        # User roles - roles
         if user == None:
             user = ctx.author
-            await ctx.send(f"{user.mention}")
+            userCreated = datetimeDiscord(user.created_at)
+            userJoined = datetimeDiscord(user.joined_at)
+            userRoles = [f"{role.mention}" for role in user.roles if role.name != "@everyone"]
+            await ctx.send(f"User caught: {user}")
+            await ctx.send(f"Account created at: {userCreated.formatted_date}")
+            await ctx.send(f"Account joined at: {userJoined.formatted_date}")
+            await ctx.send(user.display_avatar)
+            await ctx.send(user.id)
+            await ctx.send(', '.join(userRoles))
         else:
             await ctx.send(f"{user.mention}")
+            await ctx.send(f"Getting the created at timestamp: {user.created_at}")
+            userCreated = datetimeDiscord(user.created_at)
+            await ctx.send(f"Creating datetimeDiscord interface")
+            await ctx.send(userCreated.formatted_date)
 
     @who.error
     async def who_error(self, ctx, error):
