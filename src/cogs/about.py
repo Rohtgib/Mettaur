@@ -9,6 +9,7 @@ from interfaces.time import datetimeDiscord
 path = __file__
 filename = os.path.basename(path)
 
+
 class aboutCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -39,13 +40,15 @@ class aboutCog(commands.Cog):
             user = ctx.author
             userCreated = datetimeDiscord(user.created_at)
             userJoined = datetimeDiscord(user.joined_at)
-            userRoles = [f"{role.mention}" for role in user.roles if role.name != "@everyone"]
+            userRoles = [
+                f"{role.mention}" for role in user.roles if role.name != "@everyone"
+            ]
             await ctx.send(f"User caught: {user}")
             await ctx.send(f"Account created at: {userCreated.formatted_date}")
             await ctx.send(f"Account joined at: {userJoined.formatted_date}")
             await ctx.send(user.display_avatar)
             await ctx.send(user.id)
-            await ctx.send(', '.join(userRoles))
+            await ctx.send(", ".join(userRoles))
         else:
             await ctx.send(f"{user.mention}")
             await ctx.send(f"Getting the created at timestamp: {user.created_at}")
