@@ -46,16 +46,24 @@ class aboutCog(commands.Cog):
             embed.set_thumbnail(url=user.display_avatar.url)
             embed.add_field(name="Discord member since", value=userCreated.formatted_date, inline=True)
             embed.add_field(name="Server member since", value=userJoined.formatted_date, inline=True)
-            embed.add_field(name="Roles", value=', '.join(userRoles), inline=False)
+            embed.add_field(name="Roles", value=' '.join(userRoles), inline=False)
             embed.add_field(name="Permissions", value=', '.join(userPermissions), inline=False)
             embed.set_footer(text=f"ID: {user.id}")
             await ctx.send(embed=embed)
         else:
-            await ctx.send(f"{user.mention}")
-            await ctx.send(f"Getting the created at timestamp: {user.created_at}")
             userCreated = datetimeDiscord(user.created_at)
-            await ctx.send(f"Creating datetimeDiscord interface")
-            await ctx.send(userCreated.formatted_date)
+            userJoined = datetimeDiscord(user.joined_at)
+            userRoles = [f"{role.mention}" for role in user.roles if role.name != "@everyone"]
+            userPermissions = [perm.replace("_", " ").title() for perm, value in user.guild_permissions]
+            embed = discord.Embed(title=user.mention)
+            embed.set_author(name=user, icon_url=user.display_avatar.url)
+            embed.set_thumbnail(url=user.display_avatar.url)
+            embed.add_field(name="Discord member since", value=userCreated.formatted_date, inline=True)
+            embed.add_field(name="Server member since", value=userJoined.formatted_date, inline=True)
+            embed.add_field(name="Roles", value=' '.join(userRoles), inline=False)
+            embed.add_field(name="Permissions", value=', '.join(userPermissions), inline=False)
+            embed.set_footer(text=f"ID: {user.id}")
+            await ctx.send(embed=embed)
 
     @who.error
     async def who_error(self, ctx, error):
