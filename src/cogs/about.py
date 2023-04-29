@@ -24,7 +24,7 @@ class aboutCog(commands.Cog):
         serverRoles = [
             role.mention for role in ctx.guild.roles if role.name != "@everyone"
         ]
-        embed = discord.Embed()
+        embed = discord.Embed(color=0xF4C448)
         embed.set_author(name=f"{ctx.guild.name}", icon_url=f"{ctx.guild.icon.url}")
         embed.set_thumbnail(url=ctx.guild.icon.url)
         embed.add_field(name="Owner", value=f"{ctx.guild.owner}", inline=False)
@@ -66,7 +66,7 @@ class aboutCog(commands.Cog):
             userPermissions = [
                 perm.replace("_", " ").title() for perm, value in user.guild_permissions
             ]
-            embed = discord.Embed(title=user.mention)
+            embed = discord.Embed(title=user.mention, color=0xF4C448)
             embed.set_author(name=user, icon_url=user.display_avatar.url)
             embed.set_thumbnail(url=user.display_avatar.url)
             embed.add_field(
@@ -92,7 +92,7 @@ class aboutCog(commands.Cog):
             userPermissions = [
                 perm.replace("_", " ").title() for perm, value in user.guild_permissions
             ]
-            embed = discord.Embed(title=user.mention)
+            embed = discord.Embed(title=user.mention, color=0xF4C448)
             embed.set_author(name=user, icon_url=user.display_avatar.url)
             embed.set_thumbnail(url=user.display_avatar.url)
             embed.add_field(
