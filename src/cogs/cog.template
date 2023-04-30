@@ -1,26 +1,22 @@
 import os
 import discord
+import datetime
 from errors import injected
 from discord.ext import commands
+from config import Config
 
 path = __file__
 filename = os.path.basename(path)
 
-class Cog(commands.Cog):
+
+class aboutCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print(f'{filename} loaded')
+        print(f"{filename[:-3].capitalize()} cog loaded")
 
-    @commands.command()
-    async def command(self, ctx):
-        await ctx.send('I work')
-    
-    @command.error
-    async def command_error(self, ctx, error):
-        await injected(ctx, error)
 
 async def setup(bot):
-    await bot.add_cog(Cog(bot))
+    await bot.add_cog(aboutCog(bot))
