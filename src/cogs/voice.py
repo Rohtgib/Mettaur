@@ -9,7 +9,7 @@ path = __file__
 filename = os.path.basename(path)
 
 
-class templateCog(commands.Cog):
+class voiceCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -19,4 +19,4 @@ class templateCog(commands.Cog):
 
 
 async def setup(bot):
-    await bot.add_cog(templateCog(bot))
+    await bot.add_cog(voiceCog(bot))
