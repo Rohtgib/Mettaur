@@ -1,8 +1,22 @@
 import asyncio
 import discord
 import os
+import logging
 from discord.ext import commands
 from config import Config
+
+while True:
+    debugMode = input("Run in debug mode? Y/N: ")
+    if debugMode.upper() == "Y":
+        logging.basicConfig(level=logging.DEBUG)
+        print("Running in debug mode")
+        break
+    if debugMode.upper() == "N":
+        print("Running on normal mode")
+        break
+    clear = lambda: os.system('cls' if os.name=='nt' else 'clear')
+    clear()
+
 
 bot = commands.Bot(
     command_prefix=Config.getPrefix(),
