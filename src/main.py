@@ -14,7 +14,7 @@ while True:
     if debugMode.upper() == "N":
         print("Running on normal mode")
         break
-    clear = lambda: os.system('cls' if os.name=='nt' else 'clear')
+    clear = lambda: os.system("cls" if os.name == "nt" else "clear")
     clear()
 
 
