@@ -22,11 +22,12 @@ class gamesCog(commands.Cog):
     async def coinflip(self, ctx):
         coin = random.randint(1,2)
         await ctx.send(coin)
+        if coin == 1:
             await ctx.send("Coin landed on heads")
         else:
             await ctx.send("Coin landed on tails")
 
-    @config.error
+    @coinflip.error
     async def coinflip_error(self, ctx, error):
         await injected(ctx, error)
 
@@ -34,7 +35,7 @@ class gamesCog(commands.Cog):
     async def roll(self, ctx, die: int = 1):
         if die > 2:
             await ctx.send("I'm currently limited to only rolling 2 dice per command")
-            break
+            return
         while i < die:
             die = random.randint(1,2,3,4,5,6)
         
