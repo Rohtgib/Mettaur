@@ -20,24 +20,29 @@ class gamesCog(commands.Cog):
 
     @commands.command()
     async def coinflip(self, ctx):
+        user = ctx.author
         coin = random.randint(1,2)
-        await ctx.send(coin)
         if coin == 1:
-            await ctx.send("Coin landed on heads")
+            coin = "Heads"
         else:
-            await ctx.send("Coin landed on tails")
+            coin = "Tails"
+        embed = discord.Embed(title=f"Coin flip by {user.mention}", color=0xF4C448)
+        embed.set_author(name=user, icon_url=user.display_avatar.url)
+        embed.add_field(name="The coin landed on...", value=f":coin: {coin}", inline=True,)
+        await ctx.send(embed=embed)
 
     @coinflip.error
     async def coinflip_error(self, ctx, error):
         await injected(ctx, error)
 
     @commands.command()
-    async def roll(self, ctx, die: int = 1):
-        if die > 2:
-            await ctx.send("I'm currently limited to only rolling 2 dice per command")
-            return
-        while i < die:
-            die = random.randint(1,2,3,4,5,6)
+    async def roll(self, ctx):
+        user = ctx.author
+        die = random.randint(1,6)
+        embed = discord.Embed(title=f"Die roll by {user.mention}", color=0xF4C448)
+        embed.set_author(name=user, icon_url=user.display_avatar.url)
+        embed.add_field(name=f"The die landed on...", value=f":game_die: {die}", inline=True,)
+        await ctx.send(embed=embed)
         
 
 async def setup(bot):
