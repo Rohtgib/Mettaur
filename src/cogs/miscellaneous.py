@@ -16,5 +16,6 @@ class miscellaneousCog(commands.Cog):
     async def on_ready(self):
         print(f"{filename[:-3].capitalize()} cog loaded")
 
+
 async def setup(bot):
     await bot.add_cog(miscellaneousCog(bot))
