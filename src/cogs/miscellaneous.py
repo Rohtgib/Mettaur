@@ -8,7 +8,7 @@ path = __file__
 filename = os.path.basename(path)
 
 
-class templateCog(commands.Cog):
+class miscellaneousCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -16,15 +16,5 @@ class templateCog(commands.Cog):
     async def on_ready(self):
         print(f"{filename[:-3].capitalize()} cog loaded")
 
-    @commands.command()
-    async def command(self, ctx):
-        # Do something in here
-        pass
-    
-    @command.error
-    async def command_error(self, ctx, error):
-        await injected(ctx,error)
-
-
 async def setup(bot):
-    await bot.add_cog(templateCog(bot))
+    await bot.add_cog(miscellaneousCog(bot))

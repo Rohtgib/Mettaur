@@ -1,6 +1,5 @@
 import os
 import discord
-import datetime
 import random
 from errors import injected
 from discord.ext import commands
@@ -43,6 +42,10 @@ class gamesCog(commands.Cog):
         embed.set_author(name=user, icon_url=user.display_avatar.url)
         embed.add_field(name=f"The die landed on...", value=f":game_die: {die}", inline=True,)
         await ctx.send(embed=embed)
+    
+    @roll.error
+    async def roll_error(self, ctx, error):
+        await injected(ctx, error)
         
 
 async def setup(bot):
