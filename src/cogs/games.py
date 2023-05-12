@@ -55,6 +55,14 @@ class gamesCog(commands.Cog):
     async def roll_error(self, ctx, error):
         await injected(ctx, error)
 
+    @commands.command()
+    async def rps(self, ctx):
+        pass
+    
+    @rps.error
+    async def rps_error(self, ctx, error):
+        await injected(ctx,error)
+
 
 async def setup(bot):
     await bot.add_cog(gamesCog(bot))
