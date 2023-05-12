@@ -23,10 +23,19 @@ class miscellaneousCog(commands.Cog):
     @commands.has_permissions(ban_members=True)
     async def randomban(self, ctx):
         server = ctx.guild
-        user = random.choice(server.members)
-        await ctx.send(f"{user} I see you.")
-
-    #        await ban(self, ctx, user,"Bad RNG")
+        while True:
+            user = random.choice(server.members)
+            try:
+                await server.ban(user, reason="Bad RNG")
+                embed = discord.Embed(
+                    title=f"User {user} was banned",
+                    color=0xF4C448,
+                )
+                embed.add_field(name="Reason:", value="Bad RNG", inline=True)
+                await ctx.send(embed=embed)
+                break
+            except (discord.HTTPException, discord.Forbidden):
+                pass
 
     @randomban.error
     async def randomban_error(self, ctx, error):
@@ -36,8 +45,19 @@ class miscellaneousCog(commands.Cog):
     @commands.has_permissions(kick_members=True)
     async def randomkick(self, ctx):
         server = ctx.guild
-        user = random.choice(server.members)
-        await ctx.send(f"{user} I see you.")
+        while True:
+            user = random.choice(server.members)
+            try:
+                await server.kick(user, reason="Bad RNG")
+                embed = discord.Embed(
+                    title=f"User {user} was kicked",
+                    color=0xF4C448,
+                )
+                embed.add_field(name="Reason:", value="Bad RNG", inline=True)
+                await ctx.send(embed=embed)
+                break
+            except (discord.HTTPException, discord.Forbidden):
+                pass
 
     @randomkick.error
     async def randomkick_error(self, ctx, error):
