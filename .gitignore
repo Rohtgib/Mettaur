@@ -3,9 +3,6 @@
 env
 img
 
-# Debug script
-debug.py
-
 # Environment variables, make your own using the .env.template file
 .env
 

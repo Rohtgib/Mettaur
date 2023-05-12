@@ -3,10 +3,7 @@ A multipurpose, self hosted Discord bot written in Python.
 
 ## Features (WIP)
 
-### Moderation
-- **Clean messages in a channel**  `m!wipe`
-- **Kick users** `m!kick`
-- **Ban users** `m!ban`
+At the moment there are too many commands to list them all, I'll eventually make a website with all the commands with their usage and examples. For the time being, I'm working on making a proper help command.
 
 ## Installation and Usage
 
@@ -36,10 +33,12 @@ Lastly, run the **main.py** script located in the **src** directory
 python main.py
 ```
 
+Once you run the script, you'll be asked whether you want to run the bot in **normal** mode or **debug** mode. If you don't plan on working with the bot's code just use normal mode, if you're experiencing errors with any of the bot's functionalities, run it on debug mode and open a new issue, attaching the console output.
+
 ### Using a Docker image
 
 TBD
 
 ## Contributing
 
-I'm currently working on this project by myself, and I intend to keep it that way for now. Feel free to fork the repo and make changes as you see fit. 
+I'm currently working on this project by myself, and I intend to keep it that way for now. Feel free to fork the repo and make changes as you see fit. Do remember that I won't be able to help as much if you're working with a modified version of the bot.
