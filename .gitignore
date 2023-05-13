@@ -1,10 +1,2 @@
 # Folders
 .vscode
-env
-img
-
-# Environment variables, make your own using the .env.template file
-.env
-
-# Etc
-__pycache__
