@@ -25,7 +25,7 @@ class gamesCog(commands.Cog):
             coin = "Heads"
         else:
             coin = "Tails"
-        embed = discord.Embed(title=f"Coin flip by {user.mention}", color=0xF4C448)
+        embed = discord.Embed(title=f"Coin flip by {user.display_name}", color=0xF4C448)
         embed.set_author(name=user, icon_url=user.display_avatar.url)
         embed.add_field(
             name="The coin landed on...",
@@ -42,7 +42,7 @@ class gamesCog(commands.Cog):
     async def roll(self, ctx):
         user = ctx.author
         die = random.randint(1, 6)
-        embed = discord.Embed(title=f"Die roll by {user.mention}", color=0xF4C448)
+        embed = discord.Embed(title=f"Die roll by {user.display_name}", color=0xF4C448)
         embed.set_author(name=user, icon_url=user.display_avatar.url)
         embed.add_field(
             name=f"The die landed on...",

@@ -66,7 +66,7 @@ class aboutCog(commands.Cog):
             userPermissions = [
                 perm.replace("_", " ").title() for perm, value in user.guild_permissions
             ]
-            embed = discord.Embed(title=user.mention, color=0xF4C448)
+            embed = discord.Embed(title=user.display_name, color=0xF4C448)
             embed.set_author(name=user, icon_url=user.display_avatar.url)
             embed.set_thumbnail(url=user.display_avatar.url)
             embed.add_field(
