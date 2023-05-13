@@ -58,10 +58,10 @@ class gamesCog(commands.Cog):
     @commands.command()
     async def rps(self, ctx):
         pass
-    
+
     @rps.error
     async def rps_error(self, ctx, error):
-        await injected(ctx,error)
+        await injected(ctx, error)
 
 
 async def setup(bot):
