@@ -1,0 +1,31 @@
+:root {
+    --clr-main: #fec119;
+    --clr-main-grad1: #f2ba1d;
+    --clr-main-grad2: #ebb317;
+    --clr-alt-1: #1e1e1e;
+    --clr-alt-2: #1b1b1b;
+    --clr-alt-3: #181818;
+    --clr-title: #191919;
+    --clr-text: #ffffff;
+}
+
+.hero {
+    background-color: var(--clr-main);
+    color: var(--clr-title);
+
+}
+
+.box {
+    background-color: var(--clr-alt-1);
+    color: var(--clr-text);
+}
+
+.box_dark {
+    background-color: var(--clr-alt-2);
+    color: var(--clr-text);
+}
+
+.box_darker {
+    background-color: var(--clr-alt-3);
+    color: var(--clr-text);
+}
